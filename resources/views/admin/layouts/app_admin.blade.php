@@ -46,6 +46,7 @@
 
                           <ul class="dropdown-menu" role="menu">{{route('admin.category.index')}}">
                             <li><a href={{route('admin.category.index')}}">Категории</a></li>
+                            <li><a href="{{route('admin.article.index')}}">Записи блога</a></li>
                             <li><a href="#">Материалы</a></li>
                           </ul>
                         <li>
