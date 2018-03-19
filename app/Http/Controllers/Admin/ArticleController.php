@@ -19,7 +19,6 @@ class ArticleController extends Controller
           'articles' => Article::orderBy('created_at', 'desc')->paginate(10)
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +28,6 @@ class ArticleController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -40,7 +38,6 @@ class ArticleController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -51,7 +48,6 @@ class ArticleController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -62,7 +58,6 @@ class ArticleController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -74,7 +69,6 @@ class ArticleController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

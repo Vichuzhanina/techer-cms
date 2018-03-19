@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -44,10 +45,9 @@
                             Блог
                           </a>
 
-                          <ul class="dropdown-menu" role="menu">{{route('admin.category.index')}}">
-                            <li><a href={{route('admin.category.index')}}">Категории</a></li>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{route('admin.category.index')}}">Категории</a></li>
                             <li><a href="{{route('admin.article.index')}}">Записи блога</a></li>
-                            <li><a href="#">Материалы</a></li>
                           </ul>
                         <li>
                     </ul>
@@ -88,6 +88,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="{{ asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
