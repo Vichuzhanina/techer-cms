@@ -5,7 +5,9 @@
     <option value="1" @if ($article->published == 1) selected="" @endif>Опубликовано</option>
   @else
     <option value="0">Не опубликовано</option>
+
     <option value="1">Опубликовано</option>
+    
   @endif
 </select>
 
