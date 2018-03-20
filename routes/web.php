@@ -15,8 +15,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::resource('/article', 'ArticleController', ['as'=>'admin']);
 });
 Route::get('/', function () {
-    return view('welcome');
+    return view('blog.home');
 });
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

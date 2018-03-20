@@ -16,7 +16,6 @@ class BlogServiceProvider extends ServiceProvider
     {
         $this->topMenu();
     }
-
     /**
      * Register the application services.
      *
@@ -26,7 +25,6 @@ class BlogServiceProvider extends ServiceProvider
     {
         //
     }
-
     // Top menu for users
     public function topMenu()
     {
