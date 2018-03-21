@@ -19,7 +19,8 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                @include('layouts.top_menu', ['categories' => $categories])
+                @include('layouts.top_menu_categories', ['categories' => $categories])
+                    @include('layouts.top_menu_pages', ['pages' => $pages])
             </ul>
 
             <!-- Right Side Of Navbar -->
