@@ -1,65 +1,36 @@
-@extends('admin.layouts.app_admin')
+<?php
 
-@section('content')
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-<div class="container">
-
-  @component('admin.components.breadcrumb')
-    @slot('title') Список категорий @endslot
-    @slot('parent') Главная @endslot
-    @slot('active') Категории @endslot
-  @endcomponent
-
-  <hr>
-
-  <a href="{{route('admin.category.create')}}" class="btn btn-primary pull-right">
-    <i class="fa fa-plus-square-o"></i> Создать категорию
-  </a>
-
-  <table class="table table-striped">
-      <thead>
-        <th>Наименование</th>
-        <th>Публикация</th>
-        <th class="text-right">Действие</th>
-      </thead>
-      <tbody>
-        @forelse ($categories as $category)
-          <tr>
-            <td>{{$category->title}}</td>
-            <td>{{$category->published}}</td>
-            <td class="text-right">
-              <form onsubmit="if(confirm('Удалить?')){ return true }else{ return false }" action="{{route('admin.category.destroy', $category)}}" method="post">
-
-                <input type="hidden" name="_method" value="delete">
-                {{ csrf_field() }}
-
-                <a class="btn btn-default" href="{{route('admin.category.edit', $category->id)}}">
-                  <i class="fa fa-edit"></i>
-                </a>
-
-                <button type="submit" class="btn">
-                  <i class="fa fa-trash-o"></i>
-                </button>
-              </form>
-            </td>
-          </tr>
-        @empty
-          <tr>
-            <td colspan="3" class="text-center"><h2>Данные отсутствуют</h2></td>
-          </tr>
-        @endforelse
-      </tbody>
-      <tfoot>
-          <tr>
-              <td colspan="3">
-                  <ul class="pagination pull-right">
-                      {{$categories->links()}}
-                  </ul>
-              </td>
-          </tr>
-      </tfoot>
-    </table>
-
-</div>
-
-@endsection
+class CreateCategoriesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->integer('parent_id')->nullable();
+            $table->tinyInteger('published')->nullable();
+            $table->integer('created_by')->nullable();
+            $table->integer('modified_by')->nullable();
+            $table->timestamps();
+        });
+    }
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('categories');
+    }
+}

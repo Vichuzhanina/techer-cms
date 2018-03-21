@@ -19,7 +19,6 @@ class CreateCategoryableTable extends Migration
             $table->string('categoryable_type');
         });
     }
-
     /**
      * Reverse the migrations.
      *
