@@ -5,14 +5,12 @@
     <option value="1" @if ($article->published == 1) selected="" @endif>Опубликовано</option>
   @else
     <option value="0">Не опубликовано</option>
-
     <option value="1">Опубликовано</option>
-    
   @endif
 </select>
 
 <label for="">Заголовок</label>
-<input type="text" class="form-control" name="title" placeholder="Заголовок новости" value="{{$article->title or ""}}" required>
+<input type="text" class="form-control" name="title" placeholder="Заголовок записи блога" value="{{$article->title or ""}}" required>
 
 <label for="">Slug (Уникальное значение)</label>
 <input class="form-control" type="text" name="slug" placeholder="Автоматическая генерация" value="{{$article->slug or ""}}" readonly="">
@@ -22,7 +20,23 @@
   @include('admin.articles.partials.categories', ['categories' => $categories])
 </select>
 
+<hr />
+
+<label for="">Изображение записи</label>
+<select class="form-control" name="image_show">
+  @if (isset($article->id))
+    <option value="0" @if ($article->image_show == 0) selected="" @endif>Не отображать</option>
+    <option value="1" @if ($article->image_show == 1) selected="" @endif>Отображать</option>
+  @else
+    <option value="0">Не отображать</option>
+    <option value="1">Отображать</option>
+  @endif
 </select>
+
+<label for="">Ссылка на изображение записи</label>
+<input type="text" class="form-control" name="image" placeholder="Изображение записи блога" value="{{$article->image or ""}}">
+
+<hr />
 
 <label for="">Краткое описание</label>
 <textarea class="form-control" id="description_short" name="description_short">{{$article->description_short or ""}}</textarea>

@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
-@section('title', $category->title)
+@section('title', 'Результаты поиска: ' . $search)
 
 @section('content')
 
   <div class="col-sm-8">
+
+    <h3><strong>Результаты поиска:</strong> {{$search}}</h3>
+    <hr>
     @forelse ($articles as $article)
       {{-- Запись блога --}}
       <h2><strong>{{$article->title}}</strong></h2>
@@ -21,7 +24,7 @@
       <hr>
 
     @empty
-      <h2 class="text-center">Пусто</h2>
+      <h2 class="text-center">Результатов по данному запросу не найдено</h2>
     @endforelse
 
     {{$articles->links()}}
