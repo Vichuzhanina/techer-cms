@@ -12,7 +12,6 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-
 $factory->define(App\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
@@ -21,12 +20,20 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
-
 /**
  * Состояние для учетной записи администратора
  */
 $factory->state(App\User::class, 'admin', [
       'name' => 'admin',
+      'isAdmin' => 1,
       'email' => 'admin@test.ru',
+      'password' => bcrypt('123456'),
+]);
+/**
+ * Состояние для учетной записи пользователя
+ */
+$factory->state(App\User::class, 'user', [
+      'name' => 'user',
+      'email' => 'user@test.ru',
       'password' => bcrypt('123456'),
 ]);

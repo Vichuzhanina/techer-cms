@@ -13,7 +13,7 @@ Route::get('/blog/category/{slug?}', 'BlogController@category')->name('category'
 Route::get('/blog/article/{slug?}', 'BlogController@article')->name('article');
 Route::get('/blog/search', 'BlogController@search')->name('search');
 Route::get('/blog/page/{slug?}', 'BlogController@page')->name('page');
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth'] ], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'can:admin-only'] ], function () {
     Route::get('/', 'DashboardController@dashboard')->name('admin.index');
     Route::resource('/category', 'CategoryController', ['as'=>'admin']);
     Route::resource('/article', 'ArticleController', ['as'=>'admin']);

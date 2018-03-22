@@ -38,9 +38,11 @@
                         </a>
 
                         <ul class="dropdown-menu">
+                            @can('admin-only', auth()->user())
                             <li>
                               <a href="{{ route('admin.index') }}">Admin panel</a>
                             </li>
+                            @endcan
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
